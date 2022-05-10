@@ -6361,6 +6361,12 @@ and <dfn dfn>vertex data type</dfn> for the component.
   * `sint` = signed int
   * `float` = floating point
 
+The multi-component formats specify the number of components after "x".
+As such, {{GPUVertexFormat/"sint32x3"}} denotes a 3-component vector of `i32` values in the shader.
+
+See [[#vertex-processing]] for additional information about how vertex formats are exposed in the
+shader.
+
 <script type=idl>
 enum GPUVertexFormat {
     "uint8x2",
@@ -6396,8 +6402,198 @@ enum GPUVertexFormat {
 };
 </script>
 
-The multi-component formats specify the number of components after "x".
-As such, {{GPUVertexFormat/"sint32x3"}} denotes a 3-component vector of `i32` values in the shader.
+<table class="data">
+  <thead>
+    <tr>
+      <th>Vertex format
+      <th>Data type
+      <th>Components
+      <th>Byte size
+      <th>WGSL type
+  </thead>
+  <tbody dfn-type=enum-value dfn-for=GPUVertexFormat>
+    <tr>
+      <td><dfn>"uint8x2"
+      <td>unsigned int
+      <td>2
+      <td>2
+      <td><code>vec2&lt;u32&gt;
+    <tr>
+      <td><dfn>"uint8x4"
+      <td>unsigned int
+      <td>4
+      <td>4
+      <td><code>vec4&lt;u32&gt;
+    <tr>
+      <td><dfn>"sint8x2"
+      <td>signed int
+      <td>2
+      <td>2
+      <td><code>vec2&lt;i32&gt;
+    <tr>
+      <td><dfn>"sint8x4"
+      <td>signed int
+      <td>4
+      <td>4
+      <td><code>vec4&lt;i32&gt;
+    <tr>
+      <td><dfn>"unorm8x2"
+      <td>unsigned normalized
+      <td>2
+      <td>2
+      <td><code>vec2&lt;f32&gt;
+    <tr>
+      <td><dfn>"unorm8x4"
+      <td>unsigned normalized
+      <td>4
+      <td>4
+      <td><code>vec4&lt;f32&gt;
+    <tr>
+      <td><dfn>"snorm8x2"
+      <td>signed normalized
+      <td>2
+      <td>2
+      <td><code>vec2&lt;f32&gt;
+    <tr>
+      <td><dfn>"snorm8x4"
+      <td>signed normalized
+      <td>4
+      <td>4
+      <td><code>vec4&lt;f32&gt;
+    <tr>
+      <td><dfn>"uint16x2"
+      <td>unsigned int
+      <td>2
+      <td>4
+      <td><code>vec2&lt;u32&gt;
+    <tr>
+      <td><dfn>"uint16x4"
+      <td>unsigned int
+      <td>4
+      <td>8
+      <td><code>vec4&lt;u32&gt;
+    <tr>
+      <td><dfn>"sint16x2"
+      <td>signed int
+      <td>2
+      <td>4
+      <td><code>vec2&lt;i32&gt;
+    <tr>
+      <td><dfn>"sint16x4"
+      <td>signed int
+      <td>4
+      <td>8
+      <td><code>vec4&lt;i32&gt;
+    <tr>
+      <td><dfn>"unorm16x2"
+      <td>unsigned normalized
+      <td>2
+      <td>4
+      <td><code>vec2&lt;f32&gt;
+    <tr>
+      <td><dfn>"unorm16x4"
+      <td>unsigned normalized
+      <td>4
+      <td>8
+      <td><code>vec4&lt;f32&gt;
+    <tr>
+      <td><dfn>"snorm16x2"
+      <td>signed normalized
+      <td>2
+      <td>4
+      <td><code>vec2&lt;f32&gt;
+    <tr>
+      <td><dfn>"snorm16x4"
+      <td>signed normalized
+      <td>4
+      <td>8
+      <td><code>vec4&lt;f32&gt;
+    <tr>
+      <td><dfn>"float16x2"
+      <td>float
+      <td>2
+      <td>4
+      <td><code>vec2&lt;f32&gt;
+    <tr>
+      <td><dfn>"float16x4"
+      <td>float
+      <td>4
+      <td>8
+      <td><code>vec4&lt;f32&gt;
+    <tr>
+      <td><dfn>"float32"
+      <td>float
+      <td>1
+      <td>4
+      <td><code>f32
+    <tr>
+      <td><dfn>"float32x2"
+      <td>float
+      <td>2
+      <td>8
+      <td><code>vec2&lt;f32&gt;
+    <tr>
+      <td><dfn>"float32x3"
+      <td>float
+      <td>3
+      <td>12
+      <td><code>vec3&lt;f32&gt;
+    <tr>
+      <td><dfn>"float32x4"
+      <td>float
+      <td>4
+      <td>16
+      <td><code>vec4&lt;f32&gt;
+    <tr>
+      <td><dfn>"uint32"
+      <td>unsigned int
+      <td>1
+      <td>4
+      <td><code>u32
+    <tr>
+      <td><dfn>"uint32x2"
+      <td>unsigned int
+      <td>2
+      <td>8
+      <td><code>vec2&lt;u32&gt;
+    <tr>
+      <td><dfn>"uint32x3"
+      <td>unsigned int
+      <td>3
+      <td>12
+      <td><code>vec3&lt;u32&gt;
+    <tr>
+      <td><dfn>"uint32x4"
+      <td>unsigned int
+      <td>4
+      <td>16
+      <td><code>vec4&lt;u32&gt;
+    <tr>
+      <td><dfn>"sint32"
+      <td>signed int
+      <td>1
+      <td>4
+      <td><code>i32
+    <tr>
+      <td><dfn>"sint32x2"
+      <td>signed int
+      <td>2
+      <td>8
+      <td><code>vec2&lt;i32&gt;
+    <tr>
+      <td><dfn>"sint32x3"
+      <td>signed int
+      <td>3
+      <td>12
+      <td><code>vec3&lt;i32&gt;
+    <tr>
+      <td><dfn>"sint32x4"
+      <td>signed int
+      <td>4
+      <td>16
+      <td><code>vec4&lt;i32&gt;
+  </tbody>
+</table>
 
 <script type=idl>
 enum GPUVertexStepMode {
